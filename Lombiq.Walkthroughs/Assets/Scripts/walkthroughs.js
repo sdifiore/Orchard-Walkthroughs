@@ -245,7 +245,7 @@ jQuery(($) => {
                     },
                     {
                         title: 'Username',
-                        attachTo: { element: '#UserName', on: 'bottom' },
+                        attachTo: { element: '#LoginForm_UserName', on: 'bottom' },
                         text: 'Provide your username. This recipe included a user. The username is <em>"testuser"</em>.', // #spell-check-ignore-line
                         buttons: [
                             backButton,
@@ -261,7 +261,7 @@ jQuery(($) => {
                     },
                     {
                         title: 'Password',
-                        attachTo: { element: '#Password', on: 'bottom' },
+                        attachTo: { element: '#LoginForm_Password', on: 'bottom' },
                         text: 'Provide your password. The password for the test user is <em>"Password1!"</em>.',
                         buttons: [
                             backButton,
