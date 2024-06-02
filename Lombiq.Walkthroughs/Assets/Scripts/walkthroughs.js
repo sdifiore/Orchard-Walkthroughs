@@ -1918,7 +1918,7 @@ jQuery(($) => {
                         title: 'Flow Part',
                         text: 'Click on the dropdown to edit it!',
                         attachTo: {
-                            element: '.btn.btn-outline-secondary.btn-sm.widget-editor-btn-toggle.widget-editor-btn-expand',
+                            element: '.widget-editor-btn-toggle.widget-editor-btn-expand',
                             on: 'top',
                         },
                         buttons: [
