@@ -23,7 +23,6 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
         _manifest
             .DefineScript(Shepherd)
             .SetUrl(
-                "~/" + FeatureIds.Area + "/shepherd.js/js/shepherd.min.js",
                 "~/" + FeatureIds.Area + "/shepherd.js/js/shepherd.js");
 
         _manifest
