@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/extensions
-import Shepherd from '../../node_modules/shepherd.js/dist/esm/shepherd.mjs';
+import Shepherd from '/Lombiq.Walkthroughs/shepherd.js/js/shepherd.mjs';
 
 window.Shepherd = Shepherd;
