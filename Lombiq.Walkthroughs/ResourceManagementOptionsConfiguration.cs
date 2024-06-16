@@ -22,8 +22,17 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
 
         _manifest
             .DefineScript(Shepherd)
+            .SetAttribute("type", "module")
             .SetUrl(
-                "~/" + FeatureIds.Area + "/shepherd.js/js/shepherd.js");
+                "~/" + FeatureIds.Area + "/shepherd.js/js/shepherd.mjs");
+
+        _manifest
+            .DefineScript(ShepherdToWindow)
+            .SetAttribute("type", "module")
+            .SetUrl(
+                "~/" + FeatureIds.Area + "/js/shepherd-to-window.min.js",
+                "~/" + FeatureIds.Area + "/js/shepherd-to-window.js"
+            );
 
         _manifest
             .DefineScript(ResourceNames.Walkthroughs)
