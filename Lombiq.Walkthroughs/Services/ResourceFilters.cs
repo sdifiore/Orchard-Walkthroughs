@@ -10,5 +10,6 @@ public class ResourceFilters : IResourceFilterProvider
         builder.Always().RegisterStylesheet(Shepherd);
         builder.Always().RegisterFootScript(Shepherd);
         builder.Always().RegisterFootScript(Constants.ResourceNames.Walkthroughs);
+        builder.Always().RegisterFootScript(ShepherdToWindow);
     }
 }
