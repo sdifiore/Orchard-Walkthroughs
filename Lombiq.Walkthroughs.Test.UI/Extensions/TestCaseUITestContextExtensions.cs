@@ -359,12 +359,8 @@ public static class TestCaseUITestContextExtensions
                 await AssertStepAndFillInShepherdTargetAndClickNextAsync("Layout widgets", "Give it a title.", "Sample paragraph widget");
                 await AssertStepAndClickNextAsync("Layout widgets", "Give it some content.");
                 await AssertStepAndClickShepherdTargetAsync("Layout widgets", "We are ready, let's publish it!");
-                // In Orchard Core 1.8 this link doesn't open a new tab anymore so these three lines will need to be switched to
-                // just AssertStepAndClickShepherdTargetAsync() after an Orchard upgrade.
-                AssertStep(
+                await AssertStepAndClickShepherdTargetAsync(
                     "Layout widgets", "Your paragraph widget is now published.", assertShepherdTargetIsNotBody: false);
-                await context.ClickReliablyOnAsync(_byShepherdTarget);
-                SwitchToLastWindowAndSetDefaultBrowserSize();
                 await AssertStepAndClickNextAsync(
                     "Layout widgets", "You should see your paragraph", assertShepherdTargetIsNotBody: false);
             });
