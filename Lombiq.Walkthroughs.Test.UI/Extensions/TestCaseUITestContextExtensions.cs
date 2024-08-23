@@ -47,6 +47,13 @@ public static class TestCaseUITestContextExtensions
 
         Task ClickShepherdTargetAsync() => context.ClickReliablyOnUntilUrlChangeAsync(_byShepherdTarget);
 
+        Task ClickShepherdTargetWithScriptAsync() =>
+            context.RetryIfNotStaleOrFailAsync(() =>
+            {
+                context.ExecuteScript($"document.querySelector('.{_shepherdTargetClass}').click()");
+                return Task.FromResult(context.Exists(_byShepherdTarget.Safely()));
+            });
+
         Task FillInShepherdTargetWithRetriesAsync(string text) => context.FillInWithRetriesAsync(_byShepherdTarget, text);
 
         // Just a selector on .shepherd-button-primary is not enough to find the button for some reason.
@@ -286,7 +293,8 @@ public static class TestCaseUITestContextExtensions
                 await ClickOnNextButtonAsync();
                 await AssertStepAndClickNextAsync("Taxonomies", "And you can set a permalink for it");
                 await AssertStepAndClickShepherdTargetAsync("Taxonomies", "Let's publish the new category! ");
-                await AssertStepAndClickShepherdTargetAsync("Taxonomies", "Your category is now published.");
+                AssertStep("Taxonomies", "Your category is now published.");
+                await ClickShepherdTargetWithScriptAsync();
             });
 
         // Media management
@@ -390,7 +398,8 @@ public static class TestCaseUITestContextExtensions
                 await AssertStepAndClickNextAsync("Content type editor", "You can select the editor type here.");
                 await AssertStepAndClickNextAsync("Content type editor", "You can also select the display mode here.");
                 await AssertStepAndClickShepherdTargetAsync("Content type editor", "Okay, now save it.");
-                await AssertStepAndClickShepherdTargetAsync("Content type editor", "The text field is now saved. You will also");
+                AssertStep("Content type editor", "The text field is now saved. You will also");
+                await ClickShepherdTargetWithScriptAsync();
                 await AssertStepAndClickNextAsync(
                     "Content type editor", "Congratulations, you just tinkered", assertShepherdTargetIsNotBody: false);
             });
