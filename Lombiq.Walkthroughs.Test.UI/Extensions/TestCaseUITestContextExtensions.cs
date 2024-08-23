@@ -3,7 +3,6 @@ using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
 using Shouldly;
-using System;
 using System.Threading.Tasks;
 
 namespace Lombiq.Walkthroughs.Tests.UI.Extensions;
@@ -47,6 +46,13 @@ public static class TestCaseUITestContextExtensions
         }
 
         Task ClickShepherdTargetAsync() => context.ClickReliablyOnUntilUrlChangeAsync(_byShepherdTarget);
+
+        Task ClickShepherdTargetWithScriptAsync() =>
+            context.RetryIfNotStaleOrFailAsync(() =>
+            {
+                context.ExecuteScript($"document.querySelector('.{_shepherdTargetClass}').click()");
+                return Task.FromResult(context.Exists(_byShepherdTarget.Safely()));
+            });
 
         Task FillInShepherdTargetWithRetriesAsync(string text) => context.FillInWithRetriesAsync(_byShepherdTarget, text);
 
@@ -287,7 +293,8 @@ public static class TestCaseUITestContextExtensions
                 await ClickOnNextButtonAsync();
                 await AssertStepAndClickNextAsync("Taxonomies", "And you can set a permalink for it");
                 await AssertStepAndClickShepherdTargetAsync("Taxonomies", "Let's publish the new category! ");
-                await AssertStepAndClickShepherdTargetAsync("Taxonomies", "Your category is now published.");
+                AssertStep("Taxonomies", "Your category is now published.");
+                await ClickShepherdTargetWithScriptAsync();
             });
 
         // Media management
