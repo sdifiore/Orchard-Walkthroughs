@@ -398,7 +398,8 @@ public static class TestCaseUITestContextExtensions
                 await AssertStepAndClickNextAsync("Content type editor", "You can select the editor type here.");
                 await AssertStepAndClickNextAsync("Content type editor", "You can also select the display mode here.");
                 await AssertStepAndClickShepherdTargetAsync("Content type editor", "Okay, now save it.");
-                await AssertStepAndClickShepherdTargetAsync("Content type editor", "The text field is now saved. You will also");
+                AssertStep("Content type editor", "The text field is now saved. You will also");
+                await ClickShepherdTargetWithScriptAsync();
                 await AssertStepAndClickNextAsync(
                     "Content type editor", "Congratulations, you just tinkered", assertShepherdTargetIsNotBody: false);
             });
