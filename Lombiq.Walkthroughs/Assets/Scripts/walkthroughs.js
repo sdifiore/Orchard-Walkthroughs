@@ -1,7 +1,7 @@
 jQuery(($) => {
     (function LoadShepherd(Shepherd) {
         function delay(ms) {
-            return new Promise((resolve) => setTimeout(resolve, ms));
+            return new Promise((resolve) => { setTimeout(() => resolve(ms), ms); });
         }
 
         function getCookieValue(cookieName) {
@@ -1929,6 +1929,7 @@ jQuery(($) => {
                             // Wait up to 2 seconds for the element to appear.
                             for (let i = 0; i < 10; i++) {
                                 if (document.querySelector('.widget-editor-btn-toggle.widget-editor-btn-expand')) return;
+                                // eslint-disable-next-line no-await-in-loop -- Intentionally not parallel.
                                 await delay(200);
                             }
                         },
