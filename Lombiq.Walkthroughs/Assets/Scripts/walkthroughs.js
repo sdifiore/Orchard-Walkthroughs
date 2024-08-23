@@ -1,9 +1,5 @@
 jQuery(($) => {
     (function LoadShepherd(Shepherd) {
-        function delay(ms) {
-            return new Promise((resolve) => setTimeout(resolve, ms));
-        }
-
         function getCookieValue(cookieName) {
             const name = cookieName + '=';
             const cookieArray = document.cookie.split(';').map((cookie) => cookie.trim());
@@ -1924,13 +1920,6 @@ jQuery(($) => {
                         attachTo: {
                             element: '.widget-editor-btn-toggle.widget-editor-btn-expand',
                             on: 'top',
-                        },
-                        beforeShowPromise: async () => {
-                            // Wait up to 2 seconds for the element to appear.
-                            for (let i = 0; i < 10; i++) {
-                                if (document.querySelector('.widget-editor-btn-toggle.widget-editor-btn-expand')) return;
-                                await delay(200);
-                            }
                         },
                         buttons: [
                             backButton,
