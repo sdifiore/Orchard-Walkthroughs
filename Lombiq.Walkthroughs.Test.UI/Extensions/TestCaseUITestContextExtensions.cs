@@ -46,7 +46,11 @@ public static class TestCaseUITestContextExtensions
             context.Exists(assertShepherdTargetIsNotBody ? _byShepherdTargetNotBody : _byShepherdTarget);
         }
 
-        Task ClickShepherdTargetAsync() => context.ClickReliablyOnUntilUrlChangeAsync(_byShepherdTarget);
+        Task ClickShepherdTargetAsync()
+        {
+            context.ScrollTo(_byShepherdTarget);
+            return context.ClickReliablyOnUntilUrlChangeAsync(_byShepherdTarget);
+        }
 
         Task FillInShepherdTargetWithRetriesAsync(string text) => context.FillInWithRetriesAsync(_byShepherdTarget, text);
 
