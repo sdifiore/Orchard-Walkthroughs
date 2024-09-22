@@ -205,7 +205,12 @@ public static class TestCaseUITestContextExtensions
                 await AssertStepAndClickNextAsync("Subtitle", "You can set the subtitle of your article too.");
                 await AssertStepAndClickNextAsync("Banner image", "You can add a banner image to your article too.");
                 await AssertStepAndClickNextAsync("Preview", "Before publishing your article,");
-                await AssertStepAndClickShepherdTargetAsync("Publishing", "We are ready, let's publish the article!");
+                AssertStep("Publishing", "We are ready, let's publish the article!");
+                // The button is largely out of the viewport and thus while clicking it seemingly works, it doesn't
+                // actually register (but for some reason only when using the project from NuGet). So, making sure it's
+                // scrolled into view.
+                context.ScrollTo(_byShepherdTarget);
+                await ClickShepherdTargetAsync();
             });
 
         // Article display
