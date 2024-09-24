@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lombiq.Walkthroughs.Filters;
 
-public class WalkthroughsButtonFilter : IAsyncResultFilter
+public sealed class WalkthroughsButtonFilter : IAsyncResultFilter
 {
     private readonly IShapeFactory _shapeFactory;
     private readonly ILayoutAccessor _layoutAccessor;
