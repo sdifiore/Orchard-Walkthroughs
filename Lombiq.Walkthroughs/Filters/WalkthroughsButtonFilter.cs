@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.Layout;
 using OrchardCore.Modules;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lombiq.Walkthroughs.Filters;
 
-public class WalkthroughsButtonFilter : IAsyncResultFilter
+public sealed class WalkthroughsButtonFilter : IAsyncResultFilter
 {
     private readonly IShapeFactory _shapeFactory;
     private readonly ILayoutAccessor _layoutAccessor;
