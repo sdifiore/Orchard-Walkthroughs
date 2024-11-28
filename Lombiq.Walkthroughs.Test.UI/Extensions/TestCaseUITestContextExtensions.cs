@@ -466,7 +466,8 @@ public static class TestCaseUITestContextExtensions
                 await AssertStepAndClickShepherdTargetAsync("Roles", "Since you're surely curious about those roles");
                 await AssertStepAndClickShepherdTargetAsync("Roles", "Now click on \"Roles\".");
                 await AssertStepAndClickNextAsync("Roles", "Here you can see all the existing roles and edit their");
-                await AssertStepAndClickShepherdTargetAsync("Roles", "Let's see one! Click on the \"Edit\" button.");
+                await AssertStepAndClickNextAsync("Roles", "The System permissions at the top");
+                await AssertStepAndClickShepherdTargetAsync("Roles", "Let's see a role we can edit!");
                 await AssertStepAndClickNextAsync("Roles", "A role is a collection of permissions that the user has.");
                 await AssertStepAndClickShepherdTargetAsync("Roles", "Not much to tune on this role, but click on the \"Save\"");
                 await AssertStepAndClickNextAsync(
