@@ -3155,9 +3155,9 @@ jQuery(($) => {
                     {
                         title: 'Roles',
                         text: `Here you can see all the existing roles and edit their permissions. All users will be in
-                            the "Anonymous" role by default. Once they log in, they'll have the "Authenticated" role
-                            instead. Then, you can configure further logged-in roles (users can have multiple roles)
-                            here.`,
+                            the <i>Anonymous</i> role by default. Once they log in, they'll have the
+                            <i>Authenticated</i> role instead. Then, you can configure further logged-in roles (users
+                            can have multiple roles) here.`,
                         attachTo: { element: '.ta-content', on: 'top' },
                         buttons: [
                             {
@@ -3177,8 +3177,28 @@ jQuery(($) => {
                     },
                     {
                         title: 'Roles',
-                        text: 'Let\'s see one! Click on the <em>"Edit"</em> button.',
-                        attachTo: { element: '.edit.btn.btn-primary.btn-sm', on: 'top' },
+                        text: `<p>The System permissions at the top can't be deleted, but <i>Anonymous</i> and
+                            <i>Authenticated</i> can be changed. <i>Administrator</i>, however, can't: it's a special
+                            role that has all the permissions, current and future. Users with this role can do anything!
+                            Be careful who you give this to. By the way, you're one of them 🙂.</p>`,
+                        attachTo: { element: '.ta-content', on: 'top' },
+                        buttons: [
+                            backButton,
+                            nextButton,
+                        ],
+                        id: 'roles_system_permissions',
+                        when: {
+                            show() {
+                                addShepherdQueryParams();
+                                setWalkthroughCookies(this.tour.options.id, 'roles_system_permissions');
+                            },
+                        },
+                    },
+                    {
+                        title: 'Roles',
+                        text: `<p>Let's see a role we can edit! The Authenticates role will be useful. Click on the
+                            <em>"Edit"</em> button.</p>`,
+                        attachTo: { element: 'li[data-filter-value="Authenticated"] .edit.btn.btn-primary.btn-sm', on: 'top' },
                         buttons: [
                             backButton,
                         ],
@@ -3192,11 +3212,10 @@ jQuery(($) => {
                     },
                     {
                         title: 'Roles',
-                        text: `<p>A role is a collection of permissions that the user has. And permissions specify what a
-                            user can do in Orchard Core.</p>
-                            <p>Since we're looking a the Administrator role, these users are very powerful. Sine the
-                            role also has the "Site Owners Permission" (see below), they can do just about anything.
-                            By the way, you're one of them :).</p>`,
+                        text: `<p>A role is a collection of permissions that the user has. And permissions specify what
+                            a user can do in Orchard Core.</p>
+                            <p>Since we're looking at the <i>Authenticated</i> role, this applies to all users who are
+                            simply logged in. Usually, we don't give too many permissions to this role.</p>`,
                         attachTo: { element: '.ta-content', on: 'top' },
                         buttons: [
                             {
