@@ -12,3 +12,4 @@ node_modules/
 # Mac
 .DS_Store
 
+/Lombiq.Walkthroughs/Filters/WalkthroughsButtonFilter.cs
